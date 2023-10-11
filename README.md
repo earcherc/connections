@@ -1,49 +1,31 @@
-# Core
-*No longer supported*
+# Dashboard
 
-This template provides a foundation for building Python microservices and Next.js 13 web applications, all within a Dockerized environment.
+This template provides a foundation for a NextJs dashboard using FastApi and Docker
 
 
 ## Planning Doc
-- [Google Docs](https://docs.google.com/document/d/1nWxq26N9xc58UbZNNJ4-m58uU7EoFh0y7El0LYVcf4U/edit?usp=sharing)
-- [Notion](https://www.notion.so/Main-Microservice-Project-fb97d85962ef45c2bce9fa9714499ec2?pvs=4)
+- [Google Docs](https://docs.google.com/document/d/1OTwHx2cQ_MdIOylIY77iquLv_W90QJleSebXlGf27o8/edit?usp=sharing)
 
 ## Backend 
 ### Deps
 - homebrew/nix (package manager)
 - direnv
-- docker
 - docker-compose
-- colima/docker desktop (default)
+- docker desktop (default)/colima
     - colima ipv6 issue https://github.com/abiosoft/colima/issues/583
 
 ### Local Development
 1. `cd <root_project_folder>/`
 2. `cd backend/`
-3. `python3 -m venv venv_dev` (create the global formatting venv)
-4. remove `.sample` from each services `.envrc.sample` and replace defaults
+3. `python3 -m venv venv`
+4. remove `.sample` from `.envrc.sample` and replace defaults
 5. `direnv allow` from backend root dir
-6. Install requirements for `venv_dev` (global formatting `venv`)
-```
-pip install -r requirements-dev.txt
-```
-
-Navigate to each service and perform the following:
-
-6. `cd <service>/`
-7. `python3 -m venv venv`
-8. `direnv allow` in each service (if using envrc)
-9. install requirements for each `venv`
+6. Install requirements for `venv`
 ```
 pip install -r requirements.txt
 ```
-10. install the shared_schemas package in each venv manually
-```
-pip install ../shared_schemas
-```
 
-11.  Use VSCode workspace to open project, then set interpreter path for each workspace venv (unless vscode correctly interprets)
-
+7.  Use VSCode workspace to open project, then set interpreter path for each workspace venv (unless vscode correctly interprets)
 
 ### Docker
 1. Start Docker daemon (colima or default docker desktop)
@@ -79,14 +61,7 @@ apt-get update && apt-get install curl (install curl in container)
 
 `docker exec -it` - exec commands in a running container (it~>interact)
 
-### DBeaver Connection
-
-If you encounter issues while reconnecting to the Dockerized PostgreSQL database, you may need to clear the DBeaver cache. Perform the following:
-
-- Right-click on the connection
-- Choose 'Invalidate/Reconnect'
-
-#### Connection Settings
+### DBeaver Connection Settings
 
 To configure your PostgreSQL database connection in DBeaver, use the following settings:
 
